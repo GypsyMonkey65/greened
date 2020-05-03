@@ -1,0 +1,12 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+    <p>Add a new tag:</p>
+
+    <form action={% url 'greened_blog:new_catlog' %} method='post'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button name='submit'>add catlog</button>
+
+    </form>
+{% endblock content %}

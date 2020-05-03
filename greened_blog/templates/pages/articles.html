@@ -1,0 +1,20 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+    <ul>
+        <p>Catlog: {{ catlog }}</p>
+        {% comment %} <p><a href="{% url 'pages:new_article' catlog.id %}">add a new article: </a></p> {% endcomment %}
+        {% for article in articles %}    
+            <li>
+                <p><a href="{% url 'pages:edit_article' article.id %}"> edit article: </a></p>
+                <p>{{ article.date_added|date:'M d, Y H:i'}}</p>
+                <p>{{ article.text|linebreaks }}</p>
+            </li>
+            {% empty %}
+                <li>
+                    No entry.
+                </li>
+        {% endfor %}
+        
+    </ul>
+    
+{% endblock content %}
