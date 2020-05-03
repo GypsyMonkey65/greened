@@ -1,0 +1,1 @@
+This file ensure the /static/ will be added to project.

@@ -1,0 +1,20 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+    <p>
+        Catlogs
+    </p>
+
+    <ul>
+        {% for catlog in catlogs %}
+            <li><a href="{% url 'greened_blog:articles' catlog.id %}">{{ catlog }}</a></li>
+        {% empty %}
+            <p> Are you comming? </P>
+        {% endfor %}
+    </ul>
+    
+    <p><a href="{% url 'greened_blog:new_catlog' %}">add a new catlog: </a></p>
+    
+
+{% endblock content %}
+
+

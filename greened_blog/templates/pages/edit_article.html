@@ -1,0 +1,13 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+    {% comment %} <p><a href="{% url 'greened_blog:catlog' catlog.id %}"> {{ catlog }} </a></p> {% endcomment %}
+    {% comment %} <p><a href={% url 'greened_blog:articles' catlog.id %}>{{ catlog }}</a></p> {% endcomment %}
+    <p>edit article</p>
+
+    <form action="{% url 'greened_blog:edit_article' article.id %}" method='post'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button name='submit'>save article</button>
+    </form>
+{% endblock content %}
