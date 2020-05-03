@@ -1,0 +1,1 @@
+web: gunicorn greened.wsgi --log-file -
