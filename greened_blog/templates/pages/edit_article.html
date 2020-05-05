@@ -1,13 +1,25 @@
-{% extends 'pages/base.html' %}
+<style>
+    p {font-family: "Arial", sans-serif;}
+</style>
 
-{% block content %}
-    {% comment %} <p><a href="{% url 'greened_blog:catlog' catlog.id %}"> {{ catlog }} </a></p> {% endcomment %}
-    {% comment %} <p><a href={% url 'greened_blog:articles' catlog.id %}>{{ catlog }}</a></p> {% endcomment %}
-    <p>edit article</p>
+<body>
+    {% extends 'pages/base.html' %}
 
-    <form action="{% url 'greened_blog:edit_article' article.id %}" method='post'>
-        {% csrf_token %}
-        {{form.as_p}}
-        <button name='submit'>save article</button>
-    </form>
-{% endblock content %}
+    {% block content %}
+        {% comment %} <p><a href="{% url 'greened_blog:catlog' catlog.id %}"> {{ catlog }} </a></p> {% endcomment %}
+        {% comment %} <p><a href={% url 'greened_blog:articles' catlog.id %}>{{ catlog }}</a></p> {% endcomment %}
+        <p>edit article</p>
+
+        <form action="{% url 'greened_blog:edit_article' article.id %}" method='post'>
+            {% csrf_token %}
+            <p>title: </p>
+            {{ form.header }}
+            <p>content: </p>
+            {{ form.text }}
+            
+            <button name='submit'>save article</button>
+        </form>
+    {% endblock content %}
+
+
+

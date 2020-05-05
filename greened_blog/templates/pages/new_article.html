@@ -6,7 +6,10 @@
 
     <form action="{% url 'greened_blog:new_article' catlog.id %}" method='post'>
         {% csrf_token %}
-        {{ form.as_p }}
+        <p>title</p>
+        {{ form.header }}
+        <p>content</p>
+        {{ form.text }}
         <button name='submit'>add article</button>
     </form>
 {% endblock content %}

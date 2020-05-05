@@ -6,7 +6,7 @@
         {% for article in articles %}    
             <li>
                 <p><a href="{% url 'pages:edit_article' article.id %}"> edit article: </a></p>
-                <p>{{ article.date_added|date:'M d, Y H:i'}}</p>
+                <p>{{ article.header }} -- {{ article.date_added|date:'M d, Y H:i'}} </p>
                 <p>{{ article.text|linebreaks }}</p>
             </li>
             {% empty %}

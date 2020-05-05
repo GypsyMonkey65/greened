@@ -11,8 +11,8 @@ class ArticleForm(forms.ModelForm):
     class Meta:
     #这里的模型是 Article
         model = Article
-        fields = ['text']
-        labels = {'text': ''}
+        fields = ['header','text']
+        labels = {'header': '','text': ''}
         widgets = {'text': forms.Textarea(attrs={'cols': 80})}
 
 

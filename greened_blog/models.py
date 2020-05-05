@@ -22,6 +22,8 @@ class Article(models.Model):
     # NOT NULL constraint failed: greened_blog_article.topic_id
     # 居然是这里错了, 这里写了个 topic
     catlog = models.ForeignKey(Catlog,on_delete=models.CASCADE)  
+    # 增加了 Field 之后, 要在form里修改显示形式才能在html里面显示
+    header = models.CharField(max_length=50, blank = True)
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
 

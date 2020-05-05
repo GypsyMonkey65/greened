@@ -6,6 +6,7 @@
 
     <ul>
         {% for catlog in catlogs %}
+            {% comment %} url 是传递给 函数 的 实参, 函数接受接收参数和请求, 调用 URL {% endcomment %}
             <li><a href="{% url 'greened_blog:articles' catlog.id %}">{{ catlog }}</a></li>
         {% empty %}
             <p> Are you comming? </P>
