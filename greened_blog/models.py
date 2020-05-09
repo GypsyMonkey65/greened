@@ -1,4 +1,7 @@
 from django.db import models
+# django-ckeditor
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 # Top bar
@@ -24,7 +27,8 @@ class Article(models.Model):
     catlog = models.ForeignKey(Catlog,on_delete=models.CASCADE)  
     # 增加了 Field 之后, 要在form里修改显示形式才能在html里面显示
     header = models.CharField(max_length=50, blank = True)
-    text = models.TextField()
+    body = RichTextField()
+    # body = RichTextUploadingField() 为了上传文件
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -32,4 +36,4 @@ class Article(models.Model):
 
     def __str__(self):
         # 返回模型的字符串表示
-        return self.text[:50] + '...'
+        return self.body[:50] + '...'

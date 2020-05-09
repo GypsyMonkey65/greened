@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor', #富文本编辑器
+    'ckeditor_uploader', #富文本编辑器上传图片模块
     'greened_blog',
 ]
 
@@ -119,6 +121,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+#
+# STATIC_ROOT = "./greened_media/www/greend.net/static/"
+
+MEDIA_URL = '/media/'
+# 放在django项目根目录，同时也需要创建media文件夹
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+ 
+CKEDITOR_UPLOAD_PATH = 'upload/'
 
 # Heroku 设置
 cwd = os.getcwd()
@@ -140,3 +150,39 @@ ALLOWED_HOSTS = ['*']
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static')
 # )
+
+# 富文本编辑器ckeditor配置
+CKEDITOR_CONFIGS = {
+    #（1）默认配置
+    # 'default': {
+    #     'toolbar': 'full',  # 工具条功能
+    #     'height': 300,  # 编辑器高度
+    #     'width': 800,  # 编辑器宽
+    # },
+
+    #（3）自定义配置带代码块显示
+    'default': {
+        'toolbar': (
+            ['div', 'Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'],
+            ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+            ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+            ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
+            ['Styles', 'Format', 'Font', 'FontSize'],
+            ['TextColor', 'BGColor'],
+            ['Maximize', 'ShowBlocks', '-', 'pbckcode'],
+            ['Blockquote', 'CodeSnippet'],
+        ),
+        'width': 'auto',
+        # 添加按钮在这里
+        'toolbar_Custom': [
+            ['NumberedList', 'BulletedList'],
+            ['Blockquote', 'CodeSnippet'],
+        ],
+        # 插件
+        'extraPlugins': ','.join(['codesnippet', 'widget', 'lineutils', ]),
+    },
+}

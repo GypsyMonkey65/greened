@@ -17,11 +17,20 @@ def catlogs(request):
     context  = {'catlogs': catlogs}
     return render(request, 'pages/catlogs.html', context)
 
+
 def articles(request, catlog_id):
     catlog = Catlog.objects.get(id=catlog_id)
     articles = catlog.article_set.order_by('-date_added')
     context = {'catlog': catlog, 'articles': articles}
     return render(request, 'pages/articles.html', context)
+
+
+def review_article(request, article_id):
+    article = Article.objects.get(id=article_id)
+    catlog = article.catlog
+    context = {'article': article, 'catlog': catlog}
+    return render(request, 'pages/review_article.html', context)
+
 
 
 def new_catlog(request):
@@ -71,14 +80,10 @@ def edit_article(request, article_id):
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('greened_blog:articles', args=[catlog.id])) # 这里和上面那个有什么关系?
-    context ={'article': article, 'catlog': catlog, 'form': form}
+    context ={'article': article, 'catlog': catlog, 'form': form }
     return render(request, 'pages/edit_article.html', context)
 
 # 自动解析 URL
 # url 触发的是 urls 中的 path
 # path 将参数传递给 views 中的 function
 # 经过函数对参数的解析, 函数会决定返回哪个页面, 并将 template 传递给页面
-
-
-
-

@@ -1,13 +1,15 @@
 {% extends 'pages/base.html' %}
 {% block content %}
     <ul>
-        <p>Catlog: {{ catlog }}</p>
-        <p><a href="{% url 'pages:new_article' catlog.id %}">add a new article: </a></p>
+        <p> >> <a href="{% url 'pages:catlogs' %}">{{ catlog }}</p>
+        <p> <a href="{% url 'pages:new_article' catlog.id %}">add a new article: </a></p>
         {% for article in articles %}    
             <li>
                 <p><a href="{% url 'pages:edit_article' article.id %}"> edit article: </a></p>
-                <p>{{ article.header }} -- {{ article.date_added|date:'M d, Y H:i'}} </p>
-                <p>{{ article.text|linebreaks }}</p>
+                <p><a href="{% url 'pages:review_article' article.id%}">{{ article.header }} </a> -- {{ article.date_added|date:'M d, Y H:i'}} </p>
+                {% comment %} safe 可以直接解析 HTML {% endcomment %}
+                {% comment %} 只显示前500个字符 {% endcomment %}
+                <p>{{ article.body|safe|linebreaks|slice:":500" }}</p>
             </li>
             {% empty %}
                 <li>

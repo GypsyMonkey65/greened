@@ -1,4 +1,5 @@
 from django import forms
+
 from .models import Catlog, Article
 
 class CatlogForm(forms.ModelForm):
@@ -11,10 +12,9 @@ class ArticleForm(forms.ModelForm):
     class Meta:
     #这里的模型是 Article
         model = Article
-        fields = ['header','text']
-        labels = {'header': '','text': ''}
-        widgets = {'text': forms.Textarea(attrs={'cols': 80})}
-
+        fields = [ 'header', 'body' ]
+        labels = { 'header':'', 'body':'' }
+        # widget = CKEditorWidget(config_name='awesome_ckeditor')
 
 
 

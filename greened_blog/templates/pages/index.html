@@ -2,9 +2,12 @@
 
 {% block content %}
     <center>
-    <img src='http://img.mp.sohu.com/upload/20170525/66a131ded7204859a91c26e4ea57486d.png' alt='eww' />
-    <p>Nobody likes me. So I choose to be independent.</p>
-    <p>This is just a small site where I will keep on release something interesting.<p>
-    <p> Learning can be interesting in sharing. </p>
+    {% comment %} 显示图片的模块 {% endcomment %}
+        {% load static %}
+        <p><img src="{% static "index/caonima.jpg" %}" alt="..." width='200px'><p>
+        <img src='http://img.mp.sohu.com/upload/20170525/66a131ded7204859a91c26e4ea57486d.png' alt='eww' />
+        <p>Nowhere to settle down. So I choose to be independent.</p>
+        <p> This is just a small site where I will keep on release something interesting.<p>
+        <p> progressing in sharing. </p>
     </center>
 {% endblock content %}

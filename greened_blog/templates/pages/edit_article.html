@@ -1,7 +1,3 @@
-<style>
-    p {font-family: "Arial", sans-serif;}
-</style>
-
 <body>
     {% extends 'pages/base.html' %}
 
@@ -15,8 +11,8 @@
             <p>title: </p>
             {{ form.header }}
             <p>content: </p>
-            {{ form.text }}
-            
+            {{ form.media }}
+            {{ form.body }}
             <button name='submit'>save article</button>
         </form>
     {% endblock content %}

@@ -9,7 +9,9 @@
         <p>title</p>
         {{ form.header }}
         <p>content</p>
-        {{ form.text }}
+        {% comment %} x想要用cheditor 必须要有这段代码 {% endcomment %}
+        {{ form.media }}
+        {{ form.body }}
         <button name='submit'>add article</button>
     </form>
 {% endblock content %}
