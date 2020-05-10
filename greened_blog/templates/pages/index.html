@@ -1,13 +1,15 @@
 {% extends 'pages/base.html' %}
 
+{% block header %}
+    <h3> <a href="{% url 'pages:catlogs' %}"> Jurney started. </a></h3>
+{% endblock header %}
+
 {% block content %}
     <center>
     {% comment %} 显示图片的模块 {% endcomment %}
         {% load static %}
         <p><img src="{% static "index/caonima.jpg" %}" alt="fuck **P" width='200px'><p>
         <p><img src='http://img.mp.sohu.com/upload/20170525/66a131ded7204859a91c26e4ea57486d.png' alt='yeshi' width='300px'><p>
-
-
         <p> This is just a small site where I will keep on release something interesting.<p>
         <p> Progressing in sharing. </p>
     </center>
