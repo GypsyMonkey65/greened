@@ -1,17 +1,29 @@
 {% extends 'pages/base.html' %}
 
+{% block header %}
+    <h3> >> &nbsp <a href="{% url 'pages:catlogs' %}"> Catlog &nbsp </a>
+        >> &nbsp <a href="{% url 'pages:catlogs' %}"> {{ catlog }} &nbsp </a>
+        {% comment %} >> <a href="{% url 'pages:review_article' article.id%}"> &nbsp {{ article.header }} </a></h1> {% endcomment %}
+    </h3>
+{% endblock header %}
+
 {% block content %}
     {% comment %} <p><a href="{% url 'greened_blog:catlog' catlog.id %}"> {{ catlog }} </a></p> {% endcomment %}
-    <p>Add a new tag:</p>
-
-    <form action="{% url 'greened_blog:new_article' catlog.id %}" method='post'>
+    <p>Add a new article</p>
+    <div class="panel panel-default">
+        <form action="{% url 'greened_blog:new_article' catlog.id %}" method='post'>
+        <div class ="panel-heading">
         {% csrf_token %}
-        <p>title</p>
-        {{ form.header }}
-        <p>content</p>
+            <h3> {{ form.header }} </h3>
+        </div>
         {% comment %} x想要用cheditor 必须要有这段代码 {% endcomment %}
-        {{ form.media }}
-        {{ form.body }}
-        <button name='submit'>add article</button>
-    </form>
+        <div class="panel-body">
+            {{ form.media }}
+            {{ form.body }}
+            <button name='submit'> save </button>
+        </div>
+        
+        </form>
+    </div>
+
 {% endblock content %}

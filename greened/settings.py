@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap3',
     'ckeditor', #富文本编辑器
     'ckeditor_uploader', #富文本编辑器上传图片模块
     'greened_blog',
@@ -150,6 +151,10 @@ ALLOWED_HOSTS = ['*']
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static')
 # )
+
+BOOTSTRAP3 = {
+    'include_jquery': True, 
+}
 
 # 富文本编辑器ckeditor配置
 CKEDITOR_CONFIGS = {

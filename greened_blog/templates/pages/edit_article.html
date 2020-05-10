@@ -1,21 +1,29 @@
 <body>
     {% extends 'pages/base.html' %}
 
+    {% block header %}
+    <h3> >> <a href="{% url 'pages:catlogs' %}"> &nbsp Catlog &nbsp </a>
+        >> <a href="{% url 'pages:catlogs' %}"> &nbsp {{ catlog }} &nbsp </a>
+        >> <a href="{% url 'pages:review_article' article.id%}"> &nbsp {{ article.header }} </a>\
+    </h3>
+{% endblock header %}
+
     {% block content %}
         {% comment %} <p><a href="{% url 'greened_blog:catlog' catlog.id %}"> {{ catlog }} </a></p> {% endcomment %}
         {% comment %} <p><a href={% url 'greened_blog:articles' catlog.id %}>{{ catlog }}</a></p> {% endcomment %}
         <p>edit article</p>
-
-        <form action="{% url 'greened_blog:edit_article' article.id %}" method='post'>
-            {% csrf_token %}
-            <p>title: </p>
-            {{ form.header }}
-            <p>content: </p>
-            {{ form.media }}
-            {{ form.body }}
-            <button name='submit'>save article</button>
-        </form>
+        <div class="panel panel-default">
+            <form action="{% url 'greened_blog:edit_article' article.id %}" method='post'>
+                <div class ="panel-heading">
+                    {% csrf_token %}
+                    <h3>{{ form.header }}</h3>
+                </div>
+                <div class="panel-body">
+                    {{ form.media }}
+                    {{ form.body }}
+                    <button name='submit'>save article</button>
+                <div>
+            </form>
+        <div>
     {% endblock content %}
-
-
 

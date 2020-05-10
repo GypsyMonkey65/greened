@@ -1,15 +1,24 @@
 {% extends 'pages/base.html' %}
+{% block header %}
+    <h3> >> <a href="{% url 'pages:catlogs' %}"> &nbsp Catlog &nbsp </a>
+        >> <a href="{% url 'pages:catlogs' %}"> &nbsp {{ catlog }} &nbsp </a>
+        >> &nbsp {{ article.header }} </a>
+    </h3>
+{% endblock header %}
+
 {% block content %}
-    <ul>
-        <p> >> <a href="{% url 'pages:articles' catlog.id %}"> {{ catlog }} </a> >>{{ article.header }} </p>
-        <p>Catlog: {{ catlog }}</p>
-        <li>
-            <p><a href="{% url 'pages:edit_article' article.id %}"> edit article: </a></p>
-            <p>{{ article.header }} -- {{ article.date_added|date:'M d, Y H:i'}} </p>
+    <div class="panel panel-default">
+        <div class ="panel-heading">
+            <h3>{{ article.header }} -- {{ article.date_added|date:'M d, Y H:i'}} 
+                <small><a href="{% url 'pages:edit_article' article.id %}"> edit </a></small>
+            </h3>
+        </div>
+        <div class="panel-body">
             {% comment %} safe 可以直接解析 HTML {% endcomment %}
             {% comment %} 只显示前500个字符 {% endcomment %}
             <p>{{ article.body|safe|linebreaks }}</p>
-        </li>
-    </ul>
+        </div>
+    <div>
     
 {% endblock content %}
+

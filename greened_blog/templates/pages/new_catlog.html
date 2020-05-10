@@ -1,12 +1,18 @@
 {% extends 'pages/base.html' %}
+{% load bootstrap3 %}
+
+{% block headr %}
+    <p>Add a new tag:</p>
+{% endblock headr %}
 
 {% block content %}
-    <p>Add a new tag:</p>
-
     <form action={% url 'greened_blog:new_catlog' %} method='post'>
         {% csrf_token %}
-        {{form.as_p}}
-        <button name='submit'>add catlog</button>
-
+        {% comment %} 这里的长度太长了 {% endcomment %}
+        {% bootstrap_form form%}
+        {% buttons %}
+            <button name='submit'>add catlog</button>
+        {% endbuttons%}
+        {% comment %} {{form.as_p}} {% endcomment %}
     </form>
 {% endblock content %}

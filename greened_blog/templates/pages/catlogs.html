@@ -1,19 +1,23 @@
 {% extends 'pages/base.html' %}
-{% block content %}
-    <p>
-        Catlogs
-    </p>
 
+{% block header %}
+    <h3> >> &nbsp <a href="{% url 'pages:catlogs' %}">  Catlog </a>
+        <small> &nbsp &nbsp &nbsp <a href="{% url 'greened_blog:new_catlog' %}">add a new catlog</a></small> 
+    </h3>
+{% endblock header %}
+
+{% block content %}
     <ul>
         {% for catlog in catlogs %}
             {% comment %} url 是传递给 函数 的 实参, 函数接受接收参数和请求, 调用 URL {% endcomment %}
-            <li><a href="{% url 'greened_blog:articles' catlog.id %}">{{ catlog }}</a></li>
+            <li><h3><a href="{% url 'greened_blog:articles' catlog.id %}">{{ catlog }}</a></h3></li>
         {% empty %}
             <p> Are you comming? </P>
         {% endfor %}
+         
     </ul>
     
-    <p><a href="{% url 'greened_blog:new_catlog' %}">add a new catlog: </a></p>
+   
     
 
 {% endblock content %}

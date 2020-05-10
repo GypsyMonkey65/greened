@@ -1,10 +1,53 @@
-<style>
-    p {font-family: "Arial", sans-serif;}
-</style>
-<p>
-    <a href="{% url 'pages:index'%}"> Greened </a> - 
-    [
-    <a href="{% url 'pages:catlogs'%}"> Notebook </a>
-    ]
-</p>
-{% block content %}{% endblock content %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            * { font-family: "Arial", sans-serif; }
+            ul { list-style-type: none; }
+        </style>
+        <title>greened</title>
+        {% bootstrap_css%}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <!--Static nave bar-->
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar"
+                        aria-expaned="false" aria-controls="navbar"> |||
+                    </button>
+                    <a class="navbar-brand" href="{% url 'pages:index'%}">
+                        Greened
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'pages:catlogs'%}">Notebook</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+
+    </body>
+</html>
+{% comment %} <p> {% endcomment %}
+    {% comment %} <a href="{% url 'pages:index'%}"> Greened </a> -  {% endcomment %}
+    {% comment %} [ {% endcomment %}
+    {% comment %} <a href="{% url 'pages:catlogs'%}"> Notebook </a> {% endcomment %}
+    {% comment %} ] {% endcomment %}
+{% comment %} </p> {% endcomment %}
+<div class="container">
+    <div class="page-header">
+        {% block header %}{% endblock header %}
+    </div>
+    <div>
+        {% block content %}{% endblock content %}
+    </div>
+<div class="container">
