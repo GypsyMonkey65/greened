@@ -6,5 +6,5 @@ static3==0.7.0
 psycopg2 >= 2.8.5
 django-ckeditor ==5.9.0
 pillow == 7.1.2
-wheel == 0.34.2
+wheel == 0.38.1
 django-bootstrap3 == 12.1.0
